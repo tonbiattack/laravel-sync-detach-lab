@@ -1,0 +1,32 @@
+
+  [39;41;1m FAIL [39;49;22m[39m Tests\Feature\SyncDetachTest[39m
+  [32;1m✓[39;22m[90m [39m[90msync replaces the entire role set when that is the explicit contrac[39m[90m…[39m [90m0.12s[39m  
+  [31;1m⨯[39;22m[90m [39m[90madding a role does not detach existing roles[39m[90m                        [39m [90m0.01s[39m  
+  [31m────────────────────────────────────────────────────────────────────────────[39m  
+  [41;1m FAILED [49;22m [1mTests\Feature\SyncDetachTest[22m [90m>[39m adding a role does not detach exis…   
+[39;1m  追加操作が既存ロールをdetachしてはならない
+Failed asserting that two arrays are identical.
+  [39;22m[32m Array &0 [[39m[39;1m
+  [39;22m[31m-    0 => 1,[39m[39;1m
+  [39;22m[31m-    1 => 2,[39m[39;1m
+  [39;22m[32m+    0 => 2,[39m[39;1m
+  [39;22m[32m ][39m[39;1m
+  [39;22m
+
+  at [32mtests/Feature/SyncDetachTest.php[39m:[32m58[39m
+     54▕         $member->roles()->attach($reader->id);
+     55▕ 
+     56▕         app(RoleAdder::class)->addRole($member, $writer->id);
+     57▕ 
+  ➜  58▕         self::assertSame(
+     59▕             [$reader->id, $writer->id],
+     60▕             $member->roles()->orderBy('roles.id')->pluck('roles.id')->all(),
+     61▕             '追加操作が既存ロールをdetachしてはならない'
+     62▕         );
+
+  [33m1   [39m[39;1mtests/Feature/SyncDetachTest.php[39;22m:[39;1m58[39;22m
+
+
+  [90mTests:[39m    [31;1m1 failed[39;22m[90m,[39m[39m [39m[32;1m1 passed[39;22m[90m (2 assertions)[39m
+  [90mDuration:[39m [39m0.23s[39m
+
