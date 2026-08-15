@@ -10,6 +10,6 @@ final class RoleAdder
 {
     public function addRole(TeamMember $member, int $roleId): void
     {
-        $member->roles()->sync([$roleId]);
+        $member->roles()->syncWithoutDetaching([$roleId]);
     }
 }
